@@ -18,3 +18,12 @@ end
         name: Faker::Appliance.brand
     )
 end
+
+10.times do
+    Product.create!(
+        title: Faker::
+        image_url:
+        description:
+        price: 
+    )
+end
