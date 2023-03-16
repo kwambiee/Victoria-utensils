@@ -1,4 +1,4 @@
-class API::V1::UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
     before_action :authenticate_request, except: :create
     before_action :find_user, only: [:show, :update, :destroy]
 
@@ -16,7 +16,8 @@ class API::V1::UsersController < ApplicationController
         if @user.save
             render json: @user, status: :created
         else
-            render json: { @user.errors.full_messages }, status: :unprocessable_entity
+            render json: { errors: @user.errors.full_messages },
+             status: :unprocessable_entity
         end
     end
 
@@ -24,7 +25,8 @@ class API::V1::UsersController < ApplicationController
         if @user.update(user_params)
             render json: @user, status: :ok
         else
-            render json: { @user.errors.full_messages }, status: :unprocessable_entity
+            rrender json: { errors: @user.errors.full_messages },
+             status: :unprocessable_entity
         end
     end
 

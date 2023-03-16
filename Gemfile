@@ -48,4 +48,5 @@ end
 
 gem 'jwt'
 gem 'bcrypt', '~> 3.1.7'
+gem 'pry', '~> 0.13.1'
 
