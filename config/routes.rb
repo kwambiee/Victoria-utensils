@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
       resources :users
+      resources :products do
+        collection do
+          get 'new_products'
+        end
+      end
+      resources :categories
+      resources :brands
     end
   end
 
