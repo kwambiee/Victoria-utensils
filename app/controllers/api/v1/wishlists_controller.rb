@@ -1,4 +1,9 @@
 class Api::V1::WishlistsController < ApplicationController
+
+    def index
+        
+    end
+
     def create
         wishlist = @current_user.add_wishlist(product)
         render json: wishlist, status: :ok

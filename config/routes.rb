@@ -13,6 +13,7 @@ Rails.application.routes.draw do
         end
       end
       resources :categories
+      resources :wishlists, only: [:index, :create, :destroy]
       resources :brands
     end
   end
