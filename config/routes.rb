@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :admins
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -14,6 +15,9 @@ Rails.application.routes.draw do
       end
       resources :categories
       resources :brands
+      scope '/admin' do
+        resources :users
+      end
     end
   end
 
