@@ -1,4 +1,5 @@
 class Api::V1::ProductsController < ApplicationController
+    before_action :authenticate_request, except: [:index, :new_products, :show]
 
     def index
         @products = Product.all

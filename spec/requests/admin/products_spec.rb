@@ -14,33 +14,22 @@ RSpec.describe "Products", type: :request do
         brand_id: brand.id
     }
   end
-
-  describe "GET /api/v1/products" do  
-    it "returns success on successful request" do
-      get "/api/v1/products"
-      expect(response).to have_http_status(:success)
-    end
-    it "returns list of products" do
+      
+  describe "POST /admin/products" do    
+    it "should create product" do
       post_request "/admin/products", token, {product: product_params}
-      get "/api/v1/products"
-      expect(json_body.length).to be(1)
+      expect(response).to have_http_status(:created)
     end
   end
 
-  describe "GET /api/v1/products/1" do
+  describe "DELETE /admin/products/1" do
     before do 
       post_request "/admin/products", token, {product: product_params}
     end
-    
+
     it "returns success on successful request" do
-      get "/api/v1/products/#{json_body["id"]}"
-      expect(response).to have_http_status(:success)
+      delete_request "/admin/products/#{json_body["id"]}", token
+      expect(response).to have_http_status(204)
     end
-
-    it "should show a product" do
-      get "/api/v1/products/#{json_body["id"]}"
-      expect(json_body["title"]).to eq(product_params[:title])
-    end    
   end
-
 end
