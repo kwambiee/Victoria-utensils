@@ -1,4 +1,4 @@
-class Api::V1::CategoriesController < ApplicationController
+class Api::V1::BrandsController < ApplicationController
     before_action :authenticate_request, only: [:create, :update, :destroy]
     before_action :find_brand, only: [:show, :update, :destroy]
 

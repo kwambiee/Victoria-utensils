@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::API
     include JsonWebToken
-    before_action :authenticate_request
+    # before_action :authenticate_request
 
     private
 
@@ -9,6 +9,15 @@ class ApplicationController < ActionController::API
         header = header.split(' ').last if header
         decoded = jwt_decode(header)
         @current_user = User.find(decoded[:user_id])
+    rescue
+        render json: { error: 'unauthorized' }, status: :unauthorized
+    end
+
+    def authenticate_admin
+        header = request.headers['Authorization']
+        header = header.split(' ').last if header
+        decoded = jwt_decode(header)
+        @current_admin = Admin.find(decoded[:admin_id])
     rescue
         render json: { error: 'unauthorized' }, status: :unauthorized
     end

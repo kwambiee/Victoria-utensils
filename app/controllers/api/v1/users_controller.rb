@@ -2,6 +2,7 @@ class Api::V1::UsersController < ApplicationController
     before_action :authenticate_request, except: :create
     before_action :find_user, only: [:show, :update, :destroy]
 
+
     def index
         @users = User.all
         render json: @users, status: :ok
