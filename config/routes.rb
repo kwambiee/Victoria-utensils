@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :admins
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
@@ -7,19 +6,22 @@ Rails.application.routes.draw do
   post '/login', to: 'authentication#login'
   namespace :api, defaults: { format: :json } do
     namespace :v1 do
-      resources :users
-      resources :products do
+      resources :users, only: [:create, :update, :destroy]
+      resources :products, only: [:index, :show] do
         collection do
           get 'new_products'
         end
       end
-      resources :categories
-      resources :brands
-      resources :admins
-      scope '/admin' do
-        resources :users
-      end
+      resources :categories, only: [:index]
+      resources :wishlists, only: [:index, :create, :destroy]
+      resources :brands, only: [:index]
     end
   end
 
+  namespace :admin, defaults: { format: :json } do
+    resources :users, only: [:index]
+    resources :products, only: [:create, :update, :destroy]
+    resources :brands, only: [:create, :update, :destroy]
+    resources :categories, only: [:create, :update, :destroy]
+  end
 end

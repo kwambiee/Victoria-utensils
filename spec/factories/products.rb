@@ -1,10 +1,9 @@
 FactoryBot.define do
   factory :product do
-    title {}
+    title { "Mug Cup" }
     image_url { [] }
     description {}
     color { [] }
-    price {}
-    
+    price { 150.0 }    
   end
 end

@@ -8,12 +8,4 @@ class User < ApplicationRecord
     has_many :wishlists
     has_many :products, through: :wishlists
 
-    def add_wishlist(product)
-        products << product
-    end
-
-    def remove_wishlist(product)
-        products.destroy(product)
-    end
-
 end
