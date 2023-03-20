@@ -8,9 +8,21 @@ RSpec.describe "Wishlists", type: :request do
   let(:product) { create :product, title: "Cooking pan", price: 600.0, category: category, brand: brand }
   let(:wishlist_params) do
     {
-      product_id: product.id,
-      user_id: user.id
+      product_id: product.id
     }
+  end
+
+  describe "GET /api/v1/wishlists" do  
+    it "returns success on successful request" do
+      get_request "/api/v1/wishlists", token
+      expect(response).to have_http_status(:success)
+    end
+
+    it "returns list of brands" do
+      post_request "/api/v1/wishlists", token, {wishlist: wishlist_params}
+      get_request "/api/v1/wishlists", token
+      expect(json_body.length).to be(1)
+    end
   end
 
   describe "POST /api/v1/wishlists" do    
