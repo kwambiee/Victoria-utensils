@@ -1,5 +1,5 @@
 class AdminAuthenticationController < AdminController
-    before_action :authenticate_admin
+    before_action :authenticate_admin , except:[:create, :admin_login]
 
     def create
         @admin = Admin.new(admin_params)
@@ -28,8 +28,5 @@ class AdminAuthenticationController < AdminController
       params.require(:admin).permit(:email, :password, :password_confirmation)
     end
 
-    def admin_login_params
-        params.permit(:email, :password)
-    end
 
 end

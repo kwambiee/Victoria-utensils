@@ -1,4 +1,4 @@
-class Admin::BrandsController < ApplicationController
+class Admin::BrandsController < AdminController
     before_action :authenticate_admin
     before_action :find_brand, only: [:update, :destroy]
 

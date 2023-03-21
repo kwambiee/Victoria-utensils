@@ -1,7 +1,7 @@
 class AdminController < ActionController::API
 
   include JsonWebToken
-    before_action :authenticate_request
+    before_action :authenticate_admin
 
   private
 
@@ -12,9 +12,5 @@ class AdminController < ActionController::API
         @current_admin = Admin.find(decoded[:admin_id])
     rescue
         render json: { error: 'unauthorized' }, status: :unauthorized
-    end
-
-    def admin_params
-      params.require(:admin).permit(:email, :password, :password_confirmation)
     end
 end

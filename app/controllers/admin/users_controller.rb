@@ -1,5 +1,5 @@
-class Api::V1::UsersController < ApplicationController
-    before_action :authenticate_admin, except: :create
+class Admin::UsersController < AdminController
+    # before_action :authenticate_admin, except: :create
 
     def index
         @users = User.all

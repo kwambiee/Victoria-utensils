@@ -1,4 +1,4 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < AdminController
     before_action :authenticate_admin
     before_action :find_category, only: [:update, :destroy]
 

@@ -1,5 +1,5 @@
 class AuthenticationController < ApplicationController
-    before_action :authenticate_request
+    before_action :authenticate_request, except: :login
 
     def login
         @user = User.find_by(email_address: params[:email_address])
