@@ -1,10 +1,10 @@
 class Admin::ProductsController < ApplicationController
-    before_action :authenticate_request
+    before_action :authenticate_admin
     before_action :find_product, only: [:update, :destroy]
 
     def create
         @product = Product.new(product_params)
-        
+
         if @product.save
             render json: @product, status: :created
         else

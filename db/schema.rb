@@ -73,3 +73,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_17_113537) do
   add_foreign_key "products", "categories"
   add_foreign_key "wishlists", "products"
   add_foreign_key "wishlists", "users"
+end

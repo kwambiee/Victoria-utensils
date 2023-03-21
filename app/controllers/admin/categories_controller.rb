@@ -1,5 +1,5 @@
 class Admin::CategoriesController < ApplicationController
-    before_action :authenticate_request
+    before_action :authenticate_admin
     before_action :find_category, only: [:update, :destroy]
 
     def create
