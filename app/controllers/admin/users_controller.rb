@@ -4,7 +4,7 @@ class Admin::UsersController < AdminController
     def index
         @users = User.all
         render json: @users, status: :ok
-        render html "hello"
+        # render html "hello"
     end
 
 
