@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :admin do
-    email { "MyString" }
+    email { Faker::Internet.email }
     password { "MyString" }
   end
 end

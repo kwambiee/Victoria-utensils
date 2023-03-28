@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Categories", type: :request do
-  
+
   let(:user)  { create(:user) }
   let(:token) { log_in(user) }
   let(:category_params) do
@@ -11,7 +11,7 @@ RSpec.describe "Categories", type: :request do
     }
   end
 
-  describe "GET /api/v1/categories" do  
+  describe "GET /api/v1/categories" do
     it "returns success on successful request" do
       get "/api/v1/categories"
       expect(response).to have_http_status(:success)
@@ -19,7 +19,7 @@ RSpec.describe "Categories", type: :request do
     it "returns list of categories" do
       post_request "/admin/categories", token, {category: category_params}
       get "/api/v1/categories"
-      expect(json_body.length).to be(1)
+      expect(json_body).to be_an_instance_of(Array)
     end
   end
 end

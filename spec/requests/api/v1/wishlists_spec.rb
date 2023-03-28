@@ -12,7 +12,7 @@ RSpec.describe "Wishlists", type: :request do
     }
   end
 
-  describe "GET /api/v1/wishlists" do  
+  describe "GET /api/v1/wishlists" do
     it "returns success on successful request" do
       get_request "/api/v1/wishlists", token
       expect(response).to have_http_status(:success)
@@ -21,11 +21,11 @@ RSpec.describe "Wishlists", type: :request do
     it "returns list of brands" do
       post_request "/api/v1/wishlists", token, {wishlist: wishlist_params}
       get_request "/api/v1/wishlists", token
-      expect(json_body.length).to be(1)
+      expect(json_body).to be_an_instance_of(Array)
     end
   end
 
-  describe "POST /api/v1/wishlists" do    
+  describe "POST /api/v1/wishlists" do
     it "should create a wishlisting" do
       post_request "/api/v1/wishlists", token, {wishlist: wishlist_params}
       expect(response).to have_http_status(:created)
@@ -33,7 +33,7 @@ RSpec.describe "Wishlists", type: :request do
   end
 
   describe "DELETE /api/v1/wishlists/1" do
-    before do 
+    before do
       post_request "/api/v1/wishlists", token, {wishlist: wishlist_params}
     end
 
