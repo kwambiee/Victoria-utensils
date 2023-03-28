@@ -8,14 +8,14 @@
 
 5.times do
     Category.create!(
-        title: Faker::Appliance.equipment,
+        title: Faker::Alphanumeric.alpha(number: 6),
         description: Faker::Lorem.paragraph(sentence_count: 2)
     )
 end
 
 5.times do
     Brand.create!(
-        name: Faker::Appliance.brand
+        name: Faker::Alphanumeric.alpha(number: 5)
     )
 end
 
@@ -35,7 +35,7 @@ end
         phone_number:  Faker::PhoneNumber.phone_number ,
         mailing_address:  Faker::Internet.email ,
         email_address:  Faker::Internet.email ,
-        password:  Faker::Internet.password 
+        password:  Faker::Internet.password
     )
 end
 

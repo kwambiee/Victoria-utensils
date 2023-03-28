@@ -1,5 +1,5 @@
-class Admin::BrandsController < ApplicationController
-    before_action :authenticate_request
+class Admin::BrandsController < AdminController
+    before_action :authenticate_admin
     before_action :find_brand, only: [:update, :destroy]
 
     def create

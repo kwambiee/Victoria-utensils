@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :brand do
-    name { Faker::Appliance.brand }
+    name { Faker::Alphanumeric.alpha(number: 5) }
   end
 end

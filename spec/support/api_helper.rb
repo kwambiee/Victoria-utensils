@@ -16,6 +16,10 @@ module ApiHelper
         post url, params: params.to_json, headers: headers(token)
     end
 
+    def put_request(url, token, params)
+        put url, params: params.to_json, headers: headers(token)
+    end
+
     def delete_request(url, token)
         delete url, headers: headers(token)
     end
@@ -29,7 +33,12 @@ module ApiHelper
         @token = JSON.parse(response.body)['token']
     end
 
+    def admin_login(admin)
+        post '/admin/login', params: { email: admin.email, password: admin.password }
+        @token = JSON.parse(response.body)['token']
+    end
+
     def json_body
-      JSON.parse(response.body) 
+      JSON.parse(response.body)
     end
 end
